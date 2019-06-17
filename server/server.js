@@ -166,5 +166,11 @@ app.delete('/api/delete_book', (req, res) => {
     })
 })
 
+if(process.env.NODE_ENV==='production'){
+    const path=require('path');
+    app.get('/*',(req,res)=>{
+        res.sendfile(path.resolve(__dirname,'../client','build','index.html'))
+    })
+}
 const port=process.env.PORT||5000;
 app.listen(port,()=>{console.log("server is running at ",port)})
