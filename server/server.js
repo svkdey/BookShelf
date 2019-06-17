@@ -6,6 +6,10 @@ const mongoose=require('mongoose');
 const app=express();
 app.use(bodyParser.json());
 app.use(cookieParser())
+
+
+app.use(express.static('client/build'))
+
 const config = require('./config/config').get(process.env.NODE_ENV);
 
 const {User}=require('./models/user')
